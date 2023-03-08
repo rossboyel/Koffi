@@ -16,12 +16,12 @@ public class CoffeeBeanController {
 
     @GetMapping("/bean")
     public String listCoffeeBeans(Model model) {
+
         model.addAttribute("bean", coffeeBeanService.getAllCoffeeBeans());
         return "coffee-beans";
     }
 
     @GetMapping("/koffii")
-
     public String showHome() {
 
         return "index.html";

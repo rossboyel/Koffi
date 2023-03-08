@@ -117,7 +117,4 @@ public class CoffeeBean {
                 ", elevation=" + elevation +
                 '}';
     }
-
-
 }
-
