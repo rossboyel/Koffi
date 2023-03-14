@@ -13,8 +13,47 @@
             <li><a href="coffee-beans">Add New Bean</a></li>
         </ul>
     </nav>
-    <div class="container"></div>
+<div class = "container" ></div>
 </main>
+
+<script >
+    const showCoffees = () => {
+
+        const container = document.querySelector(".container");
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/data");
+        let output = "";
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const coffeeBeans = JSON.parse(xhr.responseText);
+                coffeeBeans.forEach(function(bean) {
+
+                    const card = document.createElement("div");
+                    card.className = "card";
+                    const image = document.createElement("img");
+                    image.className = "card--avatar";
+                    image.src = "images/placehold-coffee.jpg"
+                    const title = document.createElement("h1");
+                    title.className = "card--title";
+                    title.innerHTML = bean.name;
+                    const link = document.createElement("a");
+                    link.className = "card--link";
+                    link.href = "/" + bean.name;
+                    link.innerHTML = "Extractions";
+                    card.appendChild(image);
+                    card.appendChild(title);
+                    card.appendChild(link);
+                    container.appendChild(card);
+                });
+            }
+        };
+        xhr.send();
+    };
+
+    document.addEventListener("DOMContentLoaded", showCoffees);
+
+    console.log("something happening")
+</script>
 
 </body>
 </html>
