@@ -1,9 +1,11 @@
 package com.ross.kofino.controller;
 
+import com.ross.kofino.entitiy.CoffeeBean;
 import com.ross.kofino.service.CoffeeBeanService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 public class CoffeeBeanController {
@@ -14,16 +16,17 @@ public class CoffeeBeanController {
         this.coffeeBeanService = coffeeBeanService;
     }
 
-    @GetMapping("/bean")
+    @GetMapping("/coffee-beans")
     public String listCoffeeBeans(Model model) {
 
         model.addAttribute("bean", coffeeBeanService.getAllCoffeeBeans());
         return "coffee-beans";
     }
 
-    @GetMapping("/koffii")
+
+    @GetMapping("/kofino")
     public String showHome() {
 
-        return "index.html";
+        return "index";
     }
 }
